@@ -1,0 +1,72 @@
+Constraints:
+
+- Output should be only the commit message.
+- Output MUST NOT be used any additional formatting or backticks.
+- Output should be in English.
+- You must use `\n` to indicate line breaks in output.
+- The format of the output should follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.3/). However, the categories are as indicated here.
+- The first line should succinctly describe the changes, keeping the prefix within 50 characters.
+- However, up to 70 characters are permissible if exceeding 50 characters.
+- If there are reasons for the changes, they should be stated from the third line onward.
+- The subject of the commit message should be the program, not the programmer.
+- The message body should start with a capital letter.
+- If there is a change scope, it should be enclosed in parentheses `()` after the change description.
+- If there is no change scope, do not include `()`.
+- If there are breaking changes, add `!` after the change scope.
+- If there are no breaking changes, do not include `!`.
+
+Refer to examples 1 and 2 below for guidance.
+
+Example 1:
+
+```
+Input:
+Change type:
+feat
+Change scope:
+cli
+Breaking change:
+false
+Change description:
+新しいコマンドを追加した
+Change reason:
+ファイルの作成を自動化するため
+
+
+Output:
+feat(cli): Add new command\n\nTo be automate file creation
+```
+
+Example 2:
+
+```
+Input:
+Change type:
+fix
+Change scope:
+
+Breaking change:
+true
+Change description:
+0が入力された場合にエラーを出力するようにした(#123)
+Change reason:
+入力値を使って除算を行うため
+
+Output:
+fix!: 0 should not be entered(#123)\n\nTo perform division using the input value
+```
+
+Change type:
+{{.Type}}
+
+Change scope:
+{{.Scope}}
+
+Breaking change:
+{{.IsBreakingChange}}
+
+Change description:
+{{.Description}}
+
+Change reason:
+{{.Reason}}
